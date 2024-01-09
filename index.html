@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    form {
+    display: grid;
+    width: 400px;
+    margin-left: 470px;
+    border: none;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(153, 205, 50, 0.11);
+}
+
+input {
+    padding: 5px;
+    margin: 4px;
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.158);
+}
+
+.gender {
+    display: inline-block;
+}
+
+.educations {
+    display: inline-block;
+}
+
+.checked {
+    display: inline-block;
+}
+
+#religion {
+    border-radius: 6px;
+    padding: 3px;
+}
+
+label {
+    color: grey;
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkred;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#Status {
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.61);
+    padding: 2px;
+    width: 100px;
+    margin-bottom: 6px;
+}
+
+button {
+    width: 100px;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+    background-color: brown;
+    color: white;
+    margin-top: 8px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+    <h1>Job Application Form</h1>
+    <form>
+        <label for="firstname">First Name</label>
+        <input type="text" id="firstname" placeholder="Enter your first name" required>
+        <label for="lastname">Last Name</label>
+        <input type="text" id="lastname" placeholder="Enter your last name" required>
+        <label for="fathername">Father Name</label>
+        <input type="text" id="fathername" placeholder="Enter your father name" required>
+        <div style="margin: 5px;" class="educations">
+            <label for="education">Educated</label>
+            <input type="radio" name="education" value="educated" id="educated" required>
+            <label for="education">Uneducated</label>
+            <input type="radio" name="education" id="uneducated" value="uneducated" required>
+        </div>
+        <div class="reli">
+            <select style="background-color: rgb(226, 226, 154); border: none;" name="religion" id="religion">
+                <option value="islam">Islam</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div style="margin: 6px;" class="gender">
+            <label for="gender" id="gender">
+                <label for="gender">Male</label>
+                <input id="gender1" type="radio" name="gender" value="Male">
+                <label for="gender">Female</label>
+                <input id="gender2" type="radio" name="gender" value="Female">
+                <label for="gender">Other</label>
+                <input id="gender3" type="radio" name="gender" value="Other">
+            </label>
+        </div>
+        <div style="margin: 6px;" class="checked">
+            <label for="check">Subscribe</label> <input type="checkbox" id="check" name="check"
+                value="Subscribe for News Letter" required>
+        </div>
+
+        <select style="margin: 3px; background-color: rgb(226, 226, 154); border: none;" name="Status" id="Status">
+
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+        </select>
+        <button type="button" onclick="formshow()">Submit</button>
+        <p id="result"></p>
+
+    </form>
+
+<script>
+    function fetchdata() {
+    var firstname = document.getElementById("firstname").value;
+    var lastname = document.getElementById("lastname").value;
+    var fathername = document.getElementById("fathername").value;
+    var educated = document.getElementById("educated").checked ? "Educated" : "";
+    var uneducated = document.getElementById("uneducated").checked ? "Uneducated" : "";
+    var religion = document.getElementById("religion").value;
+    var gender = document.querySelector('input[name="gender"]:checked');
+    var genderValue = gender ? gender.value : "";
+    var check = document.getElementById("check").checked ? "Subscribed for News Letter" : "Not Subscribed";
+    var Status = document.getElementById("Status").value;
+    var displayinfo = "First Name: " + firstname + "<br>Last Name: " + lastname + "<br>Father Name: " + fathername +
+        "<br>Education: " + educated + " " + uneducated + "<br>Religion: " + religion +
+        "<br>Gender: " + genderValue + "<br>Subscribe or Not: " + check + "<br>Status: " + Status;
+    return displayinfo;
+}
+function formshow() {
+displayinfo = fetchdata();
+document.getElementById("result").innerHTML = displayinfo;
+document.getElementById("result").style.color = "cadetblue";
+return false;
+}
+</script>
+</body>
+
+</html>
